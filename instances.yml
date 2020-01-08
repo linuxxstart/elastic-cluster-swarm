@@ -1,0 +1,21 @@
+instances:
+  - name: search
+    dns:
+      - search
+      - localhost
+    ip:
+      - 127.0.0.1
+
+  - name: master
+    dns:
+      - master
+      - localhost
+    ip:
+      - 127.0.0.1
+  
+  - name: data
+    dns:
+      - data
+      - localhost
+    ip:
+      - 127.0.0.1
