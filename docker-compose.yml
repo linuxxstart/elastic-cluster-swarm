@@ -4,13 +4,13 @@ services:
   master:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     deploy:
+      endpoint_mode: dnsrr
       replicas: 2
     environment:
       - node.name=elk_master.{{.Task.Slot}}
       - cluster.name=elastic
       - node.master=true
       - node.data=false
-      - network.bind_host=0.0.0.0
       - discovery.seed_hosts=tasks.master
       - cluster.initial_master_nodes=elk_master.1,elk_master.2
       - bootstrap.memory_lock=false
@@ -32,13 +32,13 @@ services:
   data:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     deploy:
+      endpoint_mode: dnsrr
       replicas: 2
     environment:
       - node.name=elk_data.{{.Task.Slot}}
       - cluster.name=elastic
       - node.master=false
       - node.data=true
-      - network.bind_host=0.0.0.0
       - discovery.seed_hosts=tasks.master
       - cluster.initial_master_nodes=elk_master.1,elk_master.2
       - bootstrap.memory_lock=false

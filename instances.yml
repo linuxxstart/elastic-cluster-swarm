@@ -1,11 +1,4 @@
 instances:
-  - name: search
-    dns:
-      - search
-      - localhost
-    ip:
-      - 127.0.0.1
-
   - name: master
     dns:
       - master
